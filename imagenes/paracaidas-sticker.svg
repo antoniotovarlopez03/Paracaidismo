@@ -1,0 +1,215 @@
+<svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Filtro que genera el borde tipo "pegatina" en tono crema envejecido, muy ajustado -->
+    <filter id="stickerBorder" x="-8%" y="-8%" width="116%" height="116%">
+      <feMorphology operator="dilate" radius="3" in="SourceAlpha" result="dilated"/>
+      <feFlood flood-color="#F3E9D2" result="cream"/>
+      <feComposite in="cream" in2="dilated" operator="in" result="outline"/>
+      <feMerge>
+        <feMergeNode in="outline"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Filtro de grano fotográfico, recortado a la silueta del elemento (no a su caja rectangular) -->
+    <filter id="granoVintage" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="2" seed="7" result="ruido"/>
+      <feColorMatrix in="ruido" type="matrix" values="0 0 0 0 0.35  0 0 0 0 0.27  0 0 0 0 0.15  0 0 0 0.25 0" result="ruidoColor"/>
+      <feComposite in="ruidoColor" in2="SourceAlpha" operator="in"/>
+    </filter>
+
+    <!-- Patrón de celosía nazarí: estrella de ocho puntas entrelazada, en trazo claro y visible -->
+    <pattern id="celosiaClara" width="26" height="26" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#F5EEDD" stroke-width="1.5" stroke-opacity="0.85">
+        <path d="M13 0 L20 6 L26 13 L20 20 L13 26 L6 20 L0 13 L6 6 Z"/>
+        <path d="M13 4.5 L17.5 8.5 L21.5 13 L17.5 17.5 L13 21.5 L8.5 17.5 L4.5 13 L8.5 8.5 Z"/>
+        <path d="M0 13 H26 M13 0 V26"/>
+      </g>
+    </pattern>
+
+    <!-- Misma celosía, en trazo oscuro, para los gajos claros -->
+    <pattern id="celosiaOscura" width="26" height="26" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="#0A0D12" stroke-width="1.5" stroke-opacity="0.5">
+        <path d="M13 0 L20 6 L26 13 L20 20 L13 26 L6 20 L0 13 L6 6 Z"/>
+        <path d="M13 4.5 L17.5 8.5 L21.5 13 L17.5 17.5 L13 21.5 L8.5 17.5 L4.5 13 L8.5 8.5 Z"/>
+        <path d="M0 13 H26 M13 0 V26"/>
+      </g>
+    </pattern>
+
+    <!-- Recortes de cada gajo del canopy, reutilizados para acotar la celosía a su forma exacta -->
+    <clipPath id="clipGajo1">
+      <path d="M40 175 C40 120 65 75 100 45 C90 90 95 140 118 178 C90 182 62 182 40 175 Z"/>
+    </clipPath>
+    <clipPath id="clipGajo2">
+      <path d="M118 178 C100 140 100 85 140 30 C160 22 180 17 200 15 C185 60 178 125 182 185 C160 190 138 187 118 178 Z"/>
+    </clipPath>
+    <clipPath id="clipGajo3">
+      <path d="M182 185 C178 125 185 60 200 15 C220 17 240 22 260 30 C222 70 218 140 222 185 C209 189 195 189 182 185 Z"/>
+    </clipPath>
+    <clipPath id="clipGajo4">
+      <path d="M222 185 C218 140 222 70 260 30 C300 45 335 85 322 178 C282 187 250 190 222 185 Z"/>
+    </clipPath>
+    <clipPath id="clipGajo5">
+      <path d="M322 178 C335 85 315 65 300 45 C335 75 360 120 360 175 C348 180 335 180 322 178 Z"/>
+    </clipPath>
+
+    <!-- Filtro de resplandor cálido (glow), para las luces y el texto -->
+    <filter id="brilloCalido" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="3.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Gradiente reflectante dorado para el texto, simula un acabado metálico con brillo -->
+    <linearGradient id="oroReflectante" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF6DE"/>
+      <stop offset="35%" stop-color="#F0D89A"/>
+      <stop offset="55%" stop-color="#C99A4E"/>
+      <stop offset="100%" stop-color="#8A6423"/>
+    </linearGradient>
+
+    <!-- Arco invisible sobre el que discurre el texto: contenido dentro del contorno del canopy -->
+    <path id="arcoTexto" d="M55 150 Q200 35 345 150"/>
+  </defs>
+
+  <g filter="url(#stickerBorder)">
+
+    <!-- ===================== CUERDAS DEL PARACAÍDAS ===================== -->
+    <g stroke="#3A2E1E" stroke-width="2.4" fill="none" stroke-linecap="round">
+      <path d="M120 190 L160 300"/>
+      <path d="M155 205 L178 300"/>
+      <path d="M200 212 L200 300"/>
+      <path d="M245 205 L222 300"/>
+      <path d="M280 190 L240 300"/>
+    </g>
+
+    <!-- ===================== CANOPY (PARACAÍDAS) ===================== -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="-1.8 200 15; 1.8 200 15; -1.8 200 15"
+        keyTimes="0; 0.5; 1"
+        calcMode="spline"
+        keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+        dur="3.4s" repeatCount="indefinite"/>
+      <!-- panel base -->
+      <path d="M40 175 C40 70 130 15 200 15 C270 15 360 70 360 175 C300 150 260 190 200 190 C140 190 100 150 40 175 Z" fill="#2E4F4A"/>
+      <!-- gajos de color alternos, paleta envejecida -->
+      <path d="M40 175 C40 120 65 75 100 45 C90 90 95 140 118 178 C90 182 62 182 40 175 Z" fill="#5C8B84"/>
+      <path d="M118 178 C100 140 100 85 140 30 C160 22 180 17 200 15 C185 60 178 125 182 185 C160 190 138 187 118 178 Z" fill="#C17817"/>
+      <path d="M182 185 C178 125 185 60 200 15 C220 17 240 22 260 30 C222 70 218 140 222 185 C209 189 195 189 182 185 Z" fill="#5C8B84"/>
+      <path d="M222 185 C218 140 222 70 260 30 C300 45 335 85 322 178 C282 187 250 190 222 185 Z" fill="#C17817"/>
+      <path d="M322 178 C335 85 315 65 300 45 C335 75 360 120 360 175 C348 180 335 180 322 178 Z" fill="#2E4F4A"/>
+
+      <!-- CELOSÍA GRANADINA: cubre generosamente todos los gajos, alternando tono claro/oscuro
+           según el color de fondo de cada pieza para que se lea bien y sea visible de lejos -->
+      <g clip-path="url(#clipGajo1)"><rect x="30" y="35" width="100" height="150" fill="url(#celosiaClara)"/></g>
+      <g clip-path="url(#clipGajo2)"><rect x="90" y="10" width="110" height="180" fill="url(#celosiaOscura)"/></g>
+      <g clip-path="url(#clipGajo3)"><rect x="170" y="10" width="100" height="185" fill="url(#celosiaClara)"/></g>
+      <g clip-path="url(#clipGajo4)"><rect x="210" y="10" width="120" height="180" fill="url(#celosiaOscura)"/></g>
+      <g clip-path="url(#clipGajo5)"><rect x="290" y="35" width="80" height="150" fill="url(#celosiaClara)"/></g>
+
+
+      <!-- Ribete dorado marcando cada costura -->
+      <g stroke="#D4AF6A" stroke-width="2.6" fill="none" stroke-linecap="round">
+        <path d="M100 45 C90 90 95 140 118 178"/>
+        <path d="M140 30 C100 85 100 140 182 185"/>
+        <path d="M200 15 C185 60 178 125 182 185"/>
+        <path d="M200 15 C220 17 218 125 222 185"/>
+        <path d="M260 30 C222 70 218 140 222 185"/>
+        <path d="M300 45 C335 75 335 120 322 178"/>
+      </g>
+
+      <!-- Borde festoneado tipo almenas, en tono dorado envejecido -->
+      <g fill="#B58A3E">
+        <circle cx="55" cy="178" r="4"/>
+        <circle cx="90" cy="181" r="4"/>
+        <circle cx="128" cy="183" r="4"/>
+        <circle cx="165" cy="188" r="4"/>
+        <circle cx="200" cy="190" r="4"/>
+        <circle cx="235" cy="188" r="4"/>
+        <circle cx="272" cy="183" r="4"/>
+        <circle cx="310" cy="181" r="4"/>
+        <circle cx="345" cy="178" r="4"/>
+      </g>
+
+      <!-- Halo de tinta parda tras el texto, muy ancho, para contraste máximo -->
+      <path d="M55 150 Q200 35 345 150" stroke="#1A140D" stroke-opacity="0.7" stroke-width="30" stroke-linecap="round" fill="none"/>
+
+
+      <!-- Texto curvo "ANTONIO GRANADA", máximo contraste: blanco crema con contorno oscuro grueso -->
+      <text font-family="Georgia, 'Times New Roman', serif" font-weight="800" font-size="19" fill="#FFFBF0" stroke="#1A140D" stroke-width="1" paint-order="stroke fill" letter-spacing="0.6" text-anchor="middle">
+        <textPath href="#arcoTexto" startOffset="50%">ANTONIO GRANADA</textPath>
+      </text>
+    </g>
+
+    <!-- ===================== ARNÉS + CUERPO: balanceo conjunto, como colgando del canopy ===================== -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate"
+        values="2.2 200 210; -2.2 200 210; 2.2 200 210"
+        keyTimes="0; 0.5; 1"
+        calcMode="spline"
+        keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+        dur="3.4s" begin="-0.5s" repeatCount="indefinite"/>
+
+      <!-- ===================== ARNÉS (correas al cuerpo) ===================== -->
+      <g stroke="#241C12" stroke-width="6" stroke-linecap="round" fill="none">
+        <path d="M160 300 L178 320"/>
+        <path d="M240 300 L222 320"/>
+      </g>
+
+      <!-- ===================== CUERPO DEL PARACAIDISTA ===================== -->
+      <g>
+      <!-- brazo + mano izquierdos: balanceo sutil con pivote en el hombro -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate"
+          values="-9 178 330; 9 178 330; -9 178 330"
+          keyTimes="0; 0.5; 1"
+          calcMode="spline"
+          keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+          dur="1.9s" repeatCount="indefinite"/>
+        <path d="M178 330 C140 320 110 300 90 280 C100 300 125 330 168 345 Z" fill="#241C12"/>
+        <circle cx="92" cy="279" r="9" fill="#C99A6C"/>
+      </g>
+      <!-- brazo + mano derechos: balanceo sutil, ligeramente desfasado respecto al izquierdo -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate"
+          values="9 222 330; -9 222 330; 9 222 330"
+          keyTimes="0; 0.5; 1"
+          calcMode="spline"
+          keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+          dur="1.9s" begin="-0.35s" repeatCount="indefinite"/>
+        <path d="M222 330 C260 320 290 300 310 280 C300 300 275 330 232 345 Z" fill="#241C12"/>
+        <circle cx="308" cy="279" r="9" fill="#C99A6C"/>
+      </g>
+
+      <!-- torso / mono de vuelo -->
+      <path d="M168 320 C168 355 172 385 200 415 C228 385 232 355 232 320 C215 330 185 330 168 320 Z" fill="#5C8B84"/>
+      <path d="M182 322 C182 355 188 385 200 405 C212 385 218 355 218 322 C210 326 190 326 182 322 Z" fill="#2E4F4A"/>
+
+      <!-- piernas + botas: grupo animado con un ligero balanceo tipo péndulo, simulando el descenso -->
+      <g>
+        <animateTransform attributeName="transform" type="rotate"
+          values="-10 200 401; 10 200 401; -10 200 401"
+          keyTimes="0; 0.5; 1"
+          calcMode="spline"
+          keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"
+          dur="1.8s" repeatCount="indefinite"/>
+        <path d="M182 400 C178 425 172 445 160 458 L178 460 C188 442 194 420 196 402 Z" fill="#241C12"/>
+        <path d="M218 400 C222 425 228 445 240 458 L222 460 C212 442 206 420 204 402 Z" fill="#241C12"/>
+        <!-- botas -->
+        <path d="M156 452 L182 452 L184 460 L154 460 Z" fill="#1A140D"/>
+        <path d="M244 452 L218 452 L216 460 L246 460 Z" fill="#1A140D"/>
+      </g>
+
+      <!-- casco -->
+      <circle cx="200" cy="298" r="30" fill="#1A140D"/>
+      <path d="M172 296 a28 28 0 0 1 56 0 Z" fill="#241C12"/>
+      <!-- visor -->
+      <path d="M180 300 a20 16 0 0 0 40 0 C220 292 180 292 180 300 Z" fill="#5C8B84" opacity="0.85"/>
+      <circle cx="200" cy="270" r="4" fill="#C17817"/>
+      </g>
+    </g>
+  </g>
+</svg>

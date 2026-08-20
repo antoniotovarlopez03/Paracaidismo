@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antonio GRANADA Skydiving — Salta sobre Granada</title>
+    <meta name="description" content="Salto en paracaídas tándem en Granada. Instructores certificados, seguridad garantizada.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="icon" type="image/jpeg" href="preview.jpg">
+    <meta property="og:title" content="Antonio GRANADA Skydiving — Salta sobre Granada">
+    <meta property="og:description" content="Salto en paracaídas tándem en Granada. Instructores certificados, seguridad garantizada.">
+    <meta property="og:image" content="https://gleaming-blini-1e7f4a.netlify.app/preview.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:url" content="https://gleaming-blini-1e7f4a.netlify.app/">
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="navbar" id="navbar">
+        <a href="#inicio" class="navbar__logo"><span>ANTONIO</span> GRANADA</a>
+        <ul class="navbar__links">
+            <li><a href="#inicio">🏠 Inicio</a></li>
+            <li><a href="#proceso">📋 Cómo funciona</a></li>
+            <li><a href="#experiencias">💶 Precios</a></li>
+            <li><a href="#seguridad">🛡️ Seguridad</a></li>
+            <li><a href="#equipo">🧑‍✈️ Equipo</a></li>
+            <li><a href="#simulador">🎚️ Simulador</a></li>
+            <li><a href="#meteo">☁️ Meteorología</a></li>
+            <li><a href="#blog">💡 Curiosidades</a></li>
+            <li><a href="#redes">📱 Redes</a></li>
+            <li><a href="#ubicacion">📍 Cómo llegar</a></li>
+            <li><a href="#card-video">🎬 Ver mi salto</a></li>
+            <li><a href="#galeria">🖼️ Galería</a></li>
+            <li><a href="#opiniones">⭐ Opiniones</a></li>
+            <li><a href="#faq">❓ Preguntas</a></li>
+            <li><a href="#contacto">✉️ Contacto</a></li>
+        </ul>
+        <button class="navbar__toggle" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <header class="hero-full" id="inicio">
+        <div class="hero-full__video-wrap" aria-hidden="true">
+            <video autoplay muted loop playsinline preload="auto" title="Vídeo de fondo: salto en paracaídas">
+                <source src="Video de la portada/video-paracaidas-1.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="hero-full__overlay"></div>
+
+        <div class="hero-full__brackets" aria-hidden="true">
+            <span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span>
+        </div>
+
+        <div class="hud-altimetro" aria-hidden="true">
+            <div class="hud-altimetro__row">
+                <span class="hud-altimetro__label">Altitud</span>
+                <span class="hud-altimetro__value" id="hud-altitud">4000 m</span>
+            </div>
+            <div class="hud-altimetro__row">
+                <span class="hud-altimetro__label">Velocidad</span>
+                <span class="hud-altimetro__value" id="hud-velocidad">0 km/h</span>
+            </div>
+        </div>
+
+        <div class="hero-full__content">
+            <span class="hero-full__eyebrow">Granada · Aeródromo local</span>
+            <h1>Vive la experiencia<br>de volar.</h1>
+            <p class="hero-full__subtitle">Salto en paracaídas tándem con instructores certificados. Adrenalina real, seguridad certificada, recuerdos para siempre.</p>
+            <div class="hero-full__actions">
+                <button class="btn-primary" onclick="document.getElementById('experiencias').scrollIntoView({behavior:'smooth'})">Reservar ahora</button>
+            </div>
+        </div>
+
+        <div class="hero-full__scroll">
+            <span>Desliza</span>
+            <div class="hero-full__scroll-line"></div>
+        </div>
+    </header>
+<!-- ===================== CÓMO FUNCIONA (TIMELINE) ===================== -->
+    <section class="proceso" id="proceso">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Cómo funciona</span>
+            <h2 class="seccion-titulo">Así es tu salto, paso a paso</h2>
+            <p class="seccion-desc">Desde que llegas al aeródromo hasta que pisas tierra, cada fase está pensada para que solo tengas que preocuparte de disfrutar.</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline__linea" aria-hidden="true"></div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 29s9-9.5 9-16A9 9 0 0 0 7 13c0 6.5 9 16 9 16Z"/><circle cx="16" cy="13" r="3.2"/></svg>
+                </div>
+                <span class="timeline__num">01</span>
+                <h3>Llegada</h3>
+                <p>Recepción en el aeródromo, bienvenida y check-in del equipo.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="6" width="16" height="22" rx="2"/><path d="M12 4h8v4h-8z"/><path d="M11 14h10M11 18h10M11 22h6"/></svg>
+                </div>
+                <span class="timeline__num">02</span>
+                <h3>Formación</h3>
+                <p>Briefing de seguridad con tu instructor: posición corporal y protocolos.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 9V7a5 5 0 0 1 10 0v2"/><path d="M8 9h16l-2 18H10L8 9Z"/><path d="M13 9v18M19 9v18"/></svg>
+                </div>
+                <span class="timeline__num">03</span>
+                <h3>Equipamiento</h3>
+                <p>Colocación del arnés y revisión completa del paracaídas certificado.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18l8-2 6-11 3 1-3 10 8-1 3 3-9 4-3 8-3-1 1-8-8 2-2-3Z"/></svg>
+                </div>
+                <span class="timeline__num">04</span>
+                <h3>Vuelo</h3>
+                <p>Ascenso en avioneta hasta la altitud de salto, con vistas a Granada.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="4" width="14" height="24" rx="1.5"/><path d="M23 12l6 4-6 4"/></svg>
+                </div>
+                <span class="timeline__num">05</span>
+                <h3>Salto</h3>
+                <p>El momento de la verdad: te asomas a la puerta y saltas al vacío.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8l7 6M13 5l6 9M20 4l5 11"/></svg>
+                </div>
+                <span class="timeline__num">06</span>
+                <h3>Caída libre</h3>
+                <p>Unos 45 segundos a más de 190 km/h antes de la apertura.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a12 12 0 0 1 24 0Z"/><path d="M4 14l12 16M16 14l0 16M28 14 16 30"/></svg>
+                </div>
+                <span class="timeline__num">07</span>
+                <h3>Apertura</h3>
+                <p>El paracaídas se despliega y comienza el vuelo tranquilo hasta tierra.</p>
+            </div>
+
+            <div class="timeline__paso reveal">
+                <div class="timeline__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="6"/><circle cx="16" cy="16" r="1.4" fill="currentColor"/></svg>
+                </div>
+                <span class="timeline__num">08</span>
+                <h3>Aterrizaje</h3>
+                <p>Toma de tierra suave junto al equipo, con tu certificado y recuerdos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== EXPERIENCIAS Y PRECIOS ===================== -->
+    <section class="experiencias" id="experiencias">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow seccion-eyebrow--dark">Precios</span>
+            <h2 class="seccion-titulo seccion-titulo--dark">Elige tu forma de volar</h2>
+            <p class="seccion-desc seccion-desc--dark">Desde tu primer tándem hasta la licencia completa. Todas las experiencias incluyen equipo certificado e instructor titulado.</p>
+        </div>
+
+        <div class="grid-experiencias">
+            <article class="tarjeta-exp reveal">
+                <div class="tarjeta-exp__media">
+                    <img src="https://images.unsplash.com/photo-1659221876406-31a3746f41b9?w=600&q=80&auto=format&fit=crop" alt="Salto tándem en paracaídas">
+                </div>
+                <div class="tarjeta-exp__body">
+                    <h3>Salto Tándem</h3>
+                    <p>Tu primer salto en paracaídas, unido en todo momento a un instructor certificado que controla la apertura, la trayectoria y el aterrizaje. Incluye equipo homologado, seguro de la actividad y certificado oficial del salto. La opción más popular para debutar sin ninguna experiencia previa.</p>
+                    <div class="tarjeta-exp__precio-caja">
+                        <span class="tarjeta-exp__precio-num">150<span class="tarjeta-exp__precio-moneda">€</span></span>
+                        <span class="tarjeta-exp__precio-detalle">⏱ Media jornada</span>
+                    </div>
+                    <button class="btn-reservar-exp" onclick="abrirFormularioReserva('Salto Tándem', '150€')">Reservar</button>
+                </div>
+            </article>
+
+            <article class="tarjeta-exp reveal">
+                <div class="tarjeta-exp__media">
+                    <img src="https://images.unsplash.com/photo-1620654458602-b27e08e8afb3?w=600&q=80&auto=format&fit=crop" alt="Curso de formación AFF">
+                </div>
+                <div class="tarjeta-exp__body">
+                    <h3>Curso AFF</h3>
+                    <p>Formación oficial por niveles para aprender a saltar en solitario y obtener tu licencia de paracaidismo deportivo. Incluye teoría, prácticas en tierra, saltos supervisados con instructores a tu lado en el aire, y todo el material didáctico y equipo necesario durante el curso completo.</p>
+                    <div class="tarjeta-exp__precio-caja">
+                        <span class="tarjeta-exp__precio-num">690<span class="tarjeta-exp__precio-moneda">€</span></span>
+                        <span class="tarjeta-exp__precio-detalle">⏱ Varios días · desde</span>
+                    </div>
+                    <button class="btn-reservar-exp" onclick="abrirFormularioReserva('Curso AFF', '690€')">Reservar</button>
+                </div>
+            </article>
+
+            <article class="tarjeta-exp reveal">
+                <div class="tarjeta-exp__media">
+                    <img src="https://images.unsplash.com/photo-1629141334092-9f57a94b6686?w=600&q=80&auto=format&fit=crop" alt="Salto deportivo en caída libre">
+                </div>
+                <div class="tarjeta-exp__body">
+                    <h3>Salto Deportivo</h3>
+                    <p>Pensado para saltadores con licencia y experiencia previa. Mayor altitud de salida, caída libre más prolongada y total libertad de maniobra durante el vuelo. Incluye revisión de equipo propio o alquiler de material certificado, y acceso preferente a la avioneta.</p>
+                    <div class="tarjeta-exp__precio-caja">
+                        <span class="tarjeta-exp__precio-num">220<span class="tarjeta-exp__precio-moneda">€</span></span>
+                        <span class="tarjeta-exp__precio-detalle">⏱ Media jornada</span>
+                    </div>
+                    <button class="btn-reservar-exp" onclick="abrirFormularioReserva('Salto Deportivo', '220€')">Reservar</button>
+                </div>
+            </article>
+
+            <article class="tarjeta-exp reveal">
+                <div class="tarjeta-exp__media">
+                    <img src="https://images.unsplash.com/photo-1654786154777-02c4d0668373?w=600&q=80&auto=format&fit=crop" alt="Salto VIP con vídeo profesional">
+                </div>
+                <div class="tarjeta-exp__body">
+                    <h3>Salto VIP</h3>
+                    <p>La experiencia completa de principio a fin: salto tándem, reportaje de fotos y vídeo profesional grabado por un cámara especializado durante todo el salto, traslado desde Granada capital y diploma enmarcado de recuerdo. Todo incluido para que solo tengas que disfrutar.</p>
+                    <div class="tarjeta-exp__precio-caja">
+                        <span class="tarjeta-exp__precio-num">250<span class="tarjeta-exp__precio-moneda">€</span></span>
+                        <span class="tarjeta-exp__precio-detalle">⏱ Jornada completa</span>
+                    </div>
+                    <button class="btn-reservar-exp" onclick="abrirFormularioReserva('Salto VIP', '250€')">Reservar</button>
+                </div>
+            </article>
+
+            <article class="tarjeta-exp reveal">
+                <div class="tarjeta-exp__media">
+                    <img src="https://images.unsplash.com/photo-1521673252667-e05da380b252?w=600&q=80&auto=format&fit=crop" alt="Bono regalo de salto en paracaídas">
+                </div>
+                <div class="tarjeta-exp__body">
+                    <h3>Bono Regalo</h3>
+                    <p>Regala una experiencia inolvidable a quien tú quieras. El bono es válido durante 12 meses desde la compra y se puede canjear por cualquiera de nuestros packs, eligiendo la fecha del salto cuando el destinatario lo prefiera.</p>
+                    <div class="tarjeta-exp__precio-caja">
+                        <span class="tarjeta-exp__precio-num">150<span class="tarjeta-exp__precio-moneda">€</span></span>
+                        <span class="tarjeta-exp__precio-detalle">🎁 Regalo · desde</span>
+                    </div>
+                    <button class="btn-reservar-exp" onclick="abrirFormularioReserva('Bono Regalo', '150€')">Reservar</button>
+                </div>
+            </article>
+        </div>
+    </section>
+    <!-- ===================== ESTADÍSTICAS ===================== -->
+    <section class="stats" id="stats">
+        <div class="grid-stats">
+            <div class="stat-item reveal">
+                <span class="stat-item__numero" data-target="12000" data-sufijo="+">0</span>
+                <span class="stat-item__label">Saltos realizados</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-item__numero" data-target="4.9" data-decimales="1" data-sufijo="/5">0</span>
+                <span class="stat-item__label">Valoración media</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-item__numero" data-target="25" data-sufijo="+">0</span>
+                <span class="stat-item__label">Años de experiencia</span>
+            </div>
+            <div class="stat-item reveal">
+                <span class="stat-item__numero" data-target="100" data-sufijo="%">0</span>
+                <span class="stat-item__label">Seguridad certificada</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SEGURIDAD ===================== -->
+    <section class="seguridad" id="seguridad">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Seguridad ante todo</span>
+            <h2 class="seccion-titulo">Tu tranquilidad es nuestro protocolo</h2>
+            <p class="seccion-desc">Cada salto sigue los mismos estándares que cumplen las federaciones internacionales de paracaidismo.</p>
+        </div>
+
+        <div class="grid-seguridad">
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4l11 4v8c0 7-4.5 11.5-11 13-6.5-1.5-11-6-11-13V8l11-4Z"/><path d="M11 16l3.5 3.5L21 12"/></svg>
+                </div>
+                <h3>Certificaciones oficiales</h3>
+                <p>Instructores y aeródromo homologados según normativa nacional e internacional.</p>
+            </div>
+
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 9V7a5 5 0 0 1 10 0v2"/><path d="M8 9h16l-2 18H10L8 9Z"/></svg>
+                </div>
+                <h3>Equipamiento certificado</h3>
+                <p>Paracaídas principal y de reserva homologados, revisados tras cada uso.</p>
+            </div>
+
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16a12 12 0 1 1 24 0 12 12 0 0 1-24 0Z"/><path d="M16 9v7l5 3"/></svg>
+                </div>
+                <h3>Revisiones periódicas</h3>
+                <p>Mantenimiento e inspección de todo el material antes de cada jornada de saltos.</p>
+            </div>
+
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="6" width="22" height="16" rx="2"/><path d="M5 11h22M10 17h6"/></svg>
+                </div>
+                <h3>Protocolos estrictos</h3>
+                <p>Meteorología, peso máximo y briefing de seguridad obligatorio antes de cada salto.</p>
+            </div>
+
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="16" cy="10" r="5"/><path d="M6 28c0-6 4.5-9 10-9s10 3 10 9"/></svg>
+                </div>
+                <h3>Instructores titulados</h3>
+                <p>Todos con licencia federativa vigente y cientos de saltos tándem realizados.</p>
+            </div>
+
+            <div class="seguridad-item reveal">
+                <div class="seguridad-item__icono">
+                    <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4v4M16 24v4M4 16h4M24 16h4M7 7l3 3M22 22l3 3M25 7l-3 3M10 22l-3 3"/><circle cx="16" cy="16" r="6"/></svg>
+                </div>
+                <h3>25+ años de experiencia</h3>
+                <p>Más de dos décadas operando en el aeródromo de Granada sin incidentes.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== EQUIPO ===================== -->
+    <section class="equipo" id="equipo">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">El equipo</span>
+            <h2 class="seccion-titulo">Instructores en los que confiar tu vida</h2>
+            <p class="seccion-desc">Cada salto tándem lo realizas junto a un instructor titulado, con cientos de saltos a sus espaldas.</p>
+        </div>
+
+        <div class="grid-equipo">
+            <div class="miembro reveal">
+                <img class="miembro__foto" src="https://images.unsplash.com/photo-1652471943570-f3590a4e52ed?w=400&q=80&auto=format&fit=crop" alt="Antonio">
+                <h3>Antonio Granada</h3>
+                <span class="miembro__cargo">Instructor jefe · Fundador</span>
+                <p>Fundador del centro hace más de 25 años. Con más de 8.000 saltos tándem realizados, ha formado a la mayoría del equipo actual y sigue saltando cada semana con nuevos alumnos.</p>
+            </div>
+
+            <div class="miembro reveal">
+                <img class="miembro__foto" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80&auto=format&fit=crop" alt="María García">
+                <h3>María García</h3>
+                <span class="miembro__cargo">Instructora AFF</span>
+                <p>Formadora oficial de la licencia de paracaidismo deportivo, con más de 10 años dedicados a la enseñanza. Ha acompañado a decenas de alumnos en su camino hacia el salto en solitario.</p>
+            </div>
+
+            <div class="miembro reveal">
+                <img class="miembro__foto" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80&auto=format&fit=crop" alt="Felipe López">
+                <h3>Felipe López</h3>
+                <span class="miembro__cargo">Instructor tándem</span>
+                <p>Especialista en saltos VIP con fotografía y vídeo profesional. Cámara y saltador certificado a la vez, capta cada segundo del salto sin perder de vista tu seguridad.</p>
+            </div>
+
+            <div class="miembro reveal">
+                <img class="miembro__foto" src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80&auto=format&fit=crop" alt="Lorenzo Ruiz">
+                <h3>Lorenzo Ruiz</h3>
+                <span class="miembro__cargo">Jefe de operaciones</span>
+                <p>Responsable de meteorología, logística y seguridad en tierra. Es quien decide cada mañana si las condiciones son las adecuadas para saltar, priorizando siempre tu seguridad.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== GALERÍA ===================== -->
+    <section class="galeria" id="galeria">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow seccion-eyebrow--dark">Galería</span>
+            <h2 class="seccion-titulo seccion-titulo--dark">Momentos capturados en el aire</h2>
+            <p class="seccion-desc seccion-desc--dark">Una muestra de lo que vivirás. Pronto, con fotos reales de nuestros saltadores.</p>
+        </div>
+
+        <div class="galeria-tabs">
+            <button class="galeria-tab activa" id="tab-fotos" onclick="cambiarTabGaleria('fotos')">📷 Fotos</button>
+            <button class="galeria-tab" id="tab-videos" onclick="cambiarTabGaleria('videos')">🎬 Vídeos</button>
+        </div>
+
+        <div class="galeria-visor" id="galeria-visor"></div>
+
+        <div class="galeria-paginacion">
+            <button class="btn-celosia" onclick="siguienteGaleria()"><span>Siguiente →</span></button>
+        </div>
+    </section>
+    <!-- ===================== OPINIONES ===================== -->
+    <section class="opiniones" id="opiniones">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Opiniones</span>
+            <h2 class="seccion-titulo">Lo que dicen quienes ya han saltado</h2>
+            <p class="seccion-desc">Miles de personas han vivido esta experiencia con nosotros. Esto es lo que cuentan.</p>
+        </div>
+
+        <div class="opiniones-visor" id="opiniones-visor"></div>
+
+        <div class="opiniones-paginacion">
+            <button class="btn-celosia" onclick="siguienteOpinion()">
+                <span>Siguiente opinión</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- ===================== FAQ ===================== -->
+    <section class="faq" id="faq">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow seccion-eyebrow--dark">Preguntas frecuentes</span>
+            <h2 class="seccion-titulo seccion-titulo--dark">Todo lo que necesitas saber</h2>
+            <p class="seccion-desc seccion-desc--dark">Si tienes alguna duda que no aparece aquí, escríbenos y te respondemos encantados.</p>
+        </div>
+
+        <div class="lista-faq">
+            <div class="faq-item reveal">
+                <button class="faq-item__pregunta" onclick="toggleFaq(this)">
+                    <span>¿Necesito experiencia previa para saltar en tándem?</span>
+                    <span class="faq-item__icono">+</span>
+                </button>
+                <div class="faq-item__respuesta">
+                    <p>No, ninguna. El salto tándem va unido a un instructor certificado que se encarga de todo: tú solo disfrutas de la caída y del vuelo.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-item__pregunta" onclick="toggleFaq(this)">
+                    <span>¿Qué edad mínima y peso máximo se exige?</span>
+                    <span class="faq-item__icono">+</span>
+                </button>
+                <div class="faq-item__respuesta">
+                    <p>La edad mínima es 18 años (con autorización, desde 16). El peso máximo recomendado suele ser de 100 kg, según normativa del equipo utilizado.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-item__pregunta" onclick="toggleFaq(this)">
+                    <span>¿Qué pasa si el día del salto hace mal tiempo?</span>
+                    <span class="faq-item__icono">+</span>
+                </button>
+                <div class="faq-item__respuesta">
+                    <p>La seguridad va primero: si las condiciones meteorológicas no son adecuadas, reprogramamos tu salto sin coste adicional para otro día disponible.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-item__pregunta" onclick="toggleFaq(this)">
+                    <span>¿Cuánto dura la experiencia completa?</span>
+                    <span class="faq-item__icono">+</span>
+                </button>
+                <div class="faq-item__respuesta">
+                    <p>Desde que llegas hasta que aterrizas suele durar entre 2 y 3 horas, incluyendo formación, equipamiento, vuelo y el salto en sí.</p>
+                </div>
+            </div>
+
+            <div class="faq-item reveal">
+                <button class="faq-item__pregunta" onclick="toggleFaq(this)">
+                    <span>¿Puedo grabar mi propio salto con cámara?</span>
+                    <span class="faq-item__icono">+</span>
+                </button>
+                <div class="faq-item__respuesta">
+                    <p>Por normativa de seguridad, las cámaras propias no están permitidas durante el salto. Puedes contratar nuestro pack de foto o vídeo profesional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ===================== SIMULADOR ===================== -->
+    <section class="simulador" id="simulador">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow seccion-eyebrow--dark">Simulador</span>
+            <h2 class="seccion-titulo seccion-titulo--dark">Calcula tu propio salto</h2>
+            <p class="seccion-desc seccion-desc--dark">Mueve el control y descubre cuánto dura la caída libre y a qué velocidad se llega según la altitud.</p>
+        </div>
+
+        <div class="simulador__caja reveal">
+            <p class="simulador__instrucciones">Arrastra el punto naranja de izquierda a derecha para simular distintas altitudes de salto (entre 1.500 y 4.500 metros) y descubre cómo cambian los tiempos y velocidades.</p>
+            <div class="simulador__control">
+                <label for="simulador-altitud">Altitud de salto</label>
+                <input type="range" id="simulador-altitud" min="1500" max="4500" step="100" value="4000" oninput="actualizarSimulador()">
+                <span class="simulador__valor-altitud"><span id="simulador-altitud-valor">4000</span> m</span>
+            </div>
+
+            <div class="simulador__resultados">
+                <div class="simulador__dato">
+                    <span class="simulador__dato-num" id="simulador-tiempo">45</span>
+                    <span class="simulador__dato-label">Segundos de caída libre</span>
+                </div>
+                <div class="simulador__dato">
+                    <span class="simulador__dato-num" id="simulador-velocidad">200</span>
+                    <span class="simulador__dato-label">km/h de velocidad máxima</span>
+                </div>
+                <div class="simulador__dato">
+                    <span class="simulador__dato-num" id="simulador-apertura">1200</span>
+                    <span class="simulador__dato-label">m de altura de apertura</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== METEOROLOGÍA ===================== -->
+    <section class="meteo" id="meteo">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Meteorología</span>
+            <h2 class="seccion-titulo">Condiciones de hoy en Granada</h2>
+            <p class="seccion-desc">Consultamos el tiempo en directo antes de cada jornada. Así sabrás, igual que nosotros, si las condiciones son las adecuadas para saltar.</p>
+        </div>
+
+        <div class="meteo__caja reveal" id="meteo-caja">
+            <p class="meteo__cargando" id="meteo-cargando">Consultando el tiempo en tiempo real…</p>
+        </div>
+    </section>
+    <!-- ===================== CURIOSIDADES ===================== -->
+    <section class="blog" id="blog">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Curiosidades</span>
+            <h2 class="seccion-titulo">Curiosidades desde el cielo</h2>
+            <p class="seccion-desc">Datos, sensaciones y curiosidades sobre el mundo del paracaidismo que quizá no conocías.</p>
+        </div>
+
+        <div class="blog-visor" id="blog-visor"></div>
+
+        <div class="blog-paginacion">
+            <button class="btn-celosia" onclick="siguienteCuriosidad()"><span>Siguiente curiosidad →</span></button>
+        </div>
+    </section>
+
+    <div class="modal-curiosidad" id="modal-curiosidad">
+        <div class="modal-curiosidad__contenido">
+            <span class="cerrar-modal" id="cerrar-modal-curiosidad">&times;</span>
+            <img id="modal-curiosidad-img" src="" alt="">
+            <h3 id="modal-curiosidad-titulo"></h3>
+            <div id="modal-curiosidad-texto"></div>
+        </div>
+    </div>
+
+    <!-- ===================== REDES SOCIALES ===================== -->
+    <section class="redes" id="redes">
+        <div class="redes__contenido reveal">
+            <span class="seccion-eyebrow">Síguenos</span>
+            <h2 class="seccion-titulo">Vive el salto también en redes</h2>
+            <p class="seccion-desc">Vídeos, fotos y las últimas experiencias de nuestros saltadores, cada semana.</p>
+            <div class="redes__iconos">
+                <a href="https://www.instagram.com/antoniogranadaparacaidismo" target="_blank" rel="noopener" class="redes__icono" aria-label="Instagram" title="@antoniogranadaparacaidismo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@antoniogranadaparacaidismo" target="_blank" rel="noopener" class="redes__icono" aria-label="TikTok" title="@antoniogranadaparacaidismo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3v11.5a3.5 3.5 0 1 1-3-3.46"/><path d="M14 3c.5 3 2.5 5 6 5"/></svg>
+                </a>
+                <a href="https://www.youtube.com/@antoniogranadaparacaidismo" target="_blank" rel="noopener" class="redes__icono" aria-label="YouTube" title="Antonio Granada Paracaidismo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="12" rx="3"/><path d="M11 10l4 2-4 2v-4Z" fill="currentColor" stroke="none"/></svg>
+                </a>
+                <a href="https://www.facebook.com/antoniogranadaparacaidismo" target="_blank" rel="noopener" class="redes__icono" aria-label="Facebook" title="Antonio Granada Paracaidismo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 21v-8h3l1-4h-4V7a2 2 0 0 1 2-2h2V1h-3a5 5 0 0 0-5 5v3H7v4h3v8"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== UBICACIÓN ===================== -->
+    <section class="ubicacion" id="ubicacion">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow seccion-eyebrow--dark">Cómo llegar</span>
+            <h2 class="seccion-titulo seccion-titulo--dark">Te esperamos en el aeródromo</h2>
+            <p class="seccion-desc seccion-desc--dark">A pocos minutos del centro de Granada, con fácil acceso y aparcamiento gratuito.</p>
+        </div>
+
+        <div class="ubicacion__caja reveal">
+            <iframe
+                class="ubicacion__mapa"
+                src="https://www.google.com/maps?q=Granada,España&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="ubicacion__info">
+                <div class="ubicacion__dato">
+                    <strong>📍 Dirección</strong>
+                    <p>Aeródromo de Granada, Carretera de acceso, Granada</p>
+                </div>
+                <div class="ubicacion__dato">
+                    <strong>🕒 Horario</strong>
+                    <p>Todos los días, de 9:00 a 19:00 (según meteorología)</p>
+                </div>
+                <div class="ubicacion__dato">
+                    <strong>🚗 Aparcamiento</strong>
+                    <p>Gratuito, disponible en la propia instalación</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACTO ===================== -->
+    <section class="contacto" id="contacto">
+        <div class="seccion-cabecera reveal">
+            <span class="seccion-eyebrow">Contacto</span>
+            <h2 class="seccion-titulo">¿Tienes dudas? Escríbenos</h2>
+            <p class="seccion-desc">Responderemos a tu mensaje lo antes posible.</p>
+        </div>
+
+       <form class="form-contacto reveal" name="contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="return enviarContacto(event)">
+    <input type="hidden" name="form-name" value="contacto">
+    <p style="display:none">
+        <label>No rellenes esto si eres humano: <input name="bot-field"></label>
+    </p>
+    <div class="form-contacto__fila">
+        <div class="form-contacto__campo">
+            <label for="contacto-nombre">Nombre</label>
+            <input type="text" id="contacto-nombre" name="nombre" required>
+        </div>
+        <div class="form-contacto__campo">
+            <label for="contacto-email">Email</label>
+            <input type="email" id="contacto-email" name="email" required>
+        </div>
+    </div>
+    <div class="form-contacto__campo">
+        <label for="contacto-mensaje">Mensaje</label>
+        <textarea id="contacto-mensaje" name="mensaje" rows="4" required></textarea>
+    </div>
+    <button type="submit" class="btn-primary tema-chocolate">Enviar mensaje</button>
+</form>
+    </section>
+
+    <!-- ===================== CONTENIDO EXISTENTE (se irá rediseñando sección a sección) ===================== -->
+    <main class="legacy-content">
+
+       <div id="score-board">
+            <div class="score-board__fila">
+                <img class="score-board__icono" src="imagenes/paracaidas-sticker.svg" alt="Paracaídas">
+                <span class="score-board__puntos">Puntos: <strong id="score">0</strong></span>
+            </div>
+            <p class="score-board__ayuda">¡Atrápalos al vuelo! Cada 5 aciertos, premio sorpresa 🎁</p>
+        </div>
+
+        <div class="card card-acceso" id="card-video">
+            <span class="card-acceso__icono">🔒</span>
+            <h2>Acceso privado</h2>
+            <p class="card-acceso__desc">Introduce tus datos para ver el vídeo grabado durante tu propio salto.</p>
+            <div id="login-form">
+                <button type="button" id="btn-login" class="btn-primary card-acceso__btn" onclick="verificarAcceso()">
+                    Ver mi vídeo
+                </button>
+            </div>
+
+            <div id="video-container" class="video-container" style="display: none; margin-top: 20px;">
+                <iframe src="https://www.youtube.com/embed/OuwWH0IfeX4?si=Jnpbuo0BoZ8rbZ-n" frameborder="0" allowfullscreen style="width: 100%; border-radius: 12px;"></iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="footer__legal">
+            <span>© 2026 Antonio Skydiving. Todos los derechos reservados.</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
