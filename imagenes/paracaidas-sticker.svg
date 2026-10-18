@@ -138,9 +138,9 @@
       <path d="M55 150 Q200 35 345 150" stroke="#1A140D" stroke-opacity="0.7" stroke-width="30" stroke-linecap="round" fill="none"/>
 
 
-      <!-- Texto curvo "ANTONIO GRANADA", máximo contraste: blanco crema con contorno oscuro grueso -->
-      <text font-family="Georgia, 'Times New Roman', serif" font-weight="800" font-size="19" fill="#FFFBF0" stroke="#1A140D" stroke-width="1" paint-order="stroke fill" letter-spacing="0.6" text-anchor="middle">
-        <textPath href="#arcoTexto" startOffset="50%">ANTONIO GRANADA</textPath>
+      <!-- Texto curvo "AT", máximo contraste: blanco crema con contorno oscuro grueso -->
+      <text font-family="Georgia, 'Times New Roman', serif" font-weight="800" font-size="30" fill="#FFFBF0" stroke="#1A140D" stroke-width="1.2" paint-order="stroke fill" letter-spacing="4" text-anchor="middle">
+        <textPath href="#arcoTexto" startOffset="50%">AT</textPath>
       </text>
     </g>
 

@@ -115,7 +115,7 @@ function generarPDF() {
     const element = document.getElementById('cv-content');
     const opciones = {
         margin: 10,
-        filename: 'CV_Antonio_GRANADA.pdf',
+        filename: 'CV_AT.pdf',
         image: { type: 'jpeg', quality: 0.98 },
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
@@ -194,7 +194,7 @@ function verificarAcceso() {
     contenedor.style.fontFamily = 'sans-serif';
 
     const aviso = document.createElement('p');
-    aviso.textContent = 'Introduce tu DNI y la contraseña que te proporcionamos por SMS o correo electrónico para desbloquear tu vídeo.';
+    aviso.textContent = 'Demostración: escribe el código DEMO y la contraseña 123 para ver el vídeo de ejemplo.';
     aviso.style.fontSize = '13px';
     aviso.style.color = '#555';
     aviso.style.margin = '0 0 12px';
@@ -203,7 +203,7 @@ function verificarAcceso() {
 
     const inputDni = document.createElement('input');
     inputDni.id = 'swal-login-dni';
-    inputDni.placeholder = 'Introduce tu DNI';
+    inputDni.placeholder = 'Código (DEMO)';
     inputDni.className = 'swal2-input';
     inputDni.style.margin = '8px 0';
     inputDni.style.width = '100%';
@@ -253,7 +253,7 @@ function verificarAcceso() {
             const videoDiv = document.getElementById('video-container');
             const btn = document.getElementById('btn-login');
 
-            if (dni === "75932249A" && pass === "123") {
+            if (dni.toUpperCase() === "DEMO" && pass === "123") {
                 if (btn) btn.style.backgroundColor = "#4caf50";
                 loginForm.style.display = "none";
                 videoDiv.style.display = "block";
@@ -275,7 +275,7 @@ function verificarAcceso() {
                 if (btn) btn.style.backgroundColor = "#f44336";
                 Swal.fire({
                     title: 'Acceso Denegado',
-                    text: 'DNI o contraseña incorrectos.',
+                    text: 'Código o contraseña incorrectos.',
                     icon: 'error',
                     position: 'top-end',
                     width: '340px',
@@ -311,22 +311,10 @@ function abrirFormularioReserva(nombrePack, precioPack) {
                 <label style="font-size:12px; font-weight:700; color:#0B4F73; text-transform:uppercase; letter-spacing:0.4px;">Edad</label>
                 <input id="swal-edad" type="number" placeholder="Ej. 25" style="margin:4px 0 14px; width:100%; height:42px; font-size:14px; border-radius:10px; border:2px solid #E4E9F0; padding:0 12px; box-sizing:border-box;">
 
-                <label style="font-size:12px; font-weight:700; color:#0B4F73; text-transform:uppercase; letter-spacing:0.4px;">DNI / Pasaporte</label>
-                <input id="swal-dni" placeholder="Ej. 12345678X" style="margin:4px 0 14px; width:100%; height:42px; font-size:14px; border-radius:10px; border:2px solid #E4E9F0; padding:0 12px; box-sizing:border-box;">
-
-                <label style="font-size:12px; font-weight:700; color:#0B4F73; text-transform:uppercase; letter-spacing:0.4px;">Teléfono móvil</label>
-                <input id="swal-telefono" type="tel" placeholder="Ej. 612 345 678" style="margin:4px 0 14px; width:100%; height:42px; font-size:14px; border-radius:10px; border:2px solid #E4E9F0; padding:0 12px; box-sizing:border-box;">
-
-                <label style="font-size:12px; font-weight:700; color:#0B4F73; text-transform:uppercase; letter-spacing:0.4px;">Correo electrónico</label>
-                <input id="swal-email" type="email" placeholder="Ej. juan@ejemplo.com" style="margin:4px 0 14px; width:100%; height:42px; font-size:14px; border-radius:10px; border:2px solid #E4E9F0; padding:0 12px; box-sizing:border-box;">
-
-                <div style="background:#FFF4EC; border:1.5px dashed #FF6A2B; border-radius:12px; padding:14px; margin-top:6px;">
-                    <p style="margin:0 0 8px; font-size:12.5px; color:#A34B1E; font-weight:600;">📎 Adjunta una foto o escaneo de tu DNI/pasaporte (obligatorio para validar tu identidad el día del salto)</p>
-                    <input id="swal-dni-archivo" type="file" accept="image/*,.pdf" style="width:100%; font-size:13px;">
-                </div>
+                <p style="margin:4px 0 0; font-size:12.5px; color:#A34B1E; font-weight:600;">Proyecto de demostración: no es un negocio real y no se guarda ni se envía ningún dato.</p>
             </div>`,
         focusConfirm: false,
-        confirmButtonText: 'Continuar al pago',
+        confirmButtonText: 'Generar reserva de demostración',
         confirmButtonColor: '#1CA7EC',
         showCancelButton: true,
         cancelButtonText: 'Cancelar',
@@ -336,12 +324,8 @@ function abrirFormularioReserva(nombrePack, precioPack) {
             const nombre = document.getElementById('swal-nombre').value.trim();
             const apellidos = document.getElementById('swal-apellidos').value.trim();
             const edad = document.getElementById('swal-edad').value.trim();
-            const dni = document.getElementById('swal-dni').value.trim();
-            const telefono = document.getElementById('swal-telefono').value.trim();
-            const email = document.getElementById('swal-email').value.trim();
-            const archivo = document.getElementById('swal-dni-archivo').files.length;
-
-            if (!nombre || !apellidos || !edad || !dni || !telefono || !email) {
+            
+            if (!nombre || !apellidos || !edad) {
                 Swal.showValidationMessage('Rellena todos los campos obligatorios.');
                 return false;
             }
@@ -349,88 +333,11 @@ function abrirFormularioReserva(nombrePack, precioPack) {
                 Swal.showValidationMessage('Introduce una edad válida.');
                 return false;
             }
-            const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-            if (!emailValido) {
-                Swal.showValidationMessage('Introduce un correo electrónico válido.');
-                return false;
-            }
-            if (!archivo) {
-                Swal.showValidationMessage('Adjunta una foto o escaneo de tu DNI/pasaporte.');
-                return false;
-            }
-            return { nombre, apellidos, edad, dni, telefono, email };
+            return { nombre, apellidos, edad };
         }
     }).then((result) => {
         if (result.isConfirmed) {
-            abrirPasarelaPago(nombrePack, precioPack, result.value);
-        }
-    });
-}
-
-function abrirPasarelaPago(nombrePack, precioPack, datosPersonales) {
-    Swal.fire({
-        title: 'Pasarela de Pago Seguro',
-        text: `Total a pagar: ${precioPack}`,
-        html:
-            '<div style="text-align: left; width: 85%; margin: 0 auto; font-family: sans-serif;">' +
-                '<div style="text-align: center; margin-bottom: 12px;"><span style="background: #e8f5e9; color: #2e7d32; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">🔒 Transacción Encriptada SSL</span></div>' +
-
-                '<label style="font-size: 13px; font-weight: bold; color: #333;">Titular de la Tarjeta:</label>' +
-                '<input id="pay-titular" class="swal2-input" placeholder="Ej. Juan Pérez Gómez" style="margin: 4px 0 12px 0; width: 100%; height: 38px; font-size: 14px;">' +
-
-                '<label style="font-size: 13px; font-weight: bold; color: #333;">Número de Tarjeta:</label>' +
-                '<input id="pay-tarjeta" type="text" maxlength="16" class="swal2-input" placeholder="4500 0000 0000 0000" style="margin: 4px 0 12px 0; width: 100%; height: 38px; font-size: 14px;">' +
-
-                '<div style="display: flex; gap: 10px;">' +
-                    '<div style="flex: 1;">' +
-                        '<label style="font-size: 13px; font-weight: bold; color: #333;">Caducidad:</label>' +
-                        '<input id="pay-caducidad" type="text" maxlength="5" class="swal2-input" placeholder="MM/AA" style="margin: 4px 0 0 0; width: 100%; height: 38px; font-size: 14px;">' +
-                    '</div>' +
-                    '<div style="flex: 1;">' +
-                        '<label style="font-size: 13px; font-weight: bold; color: #333;">CVV:</label>' +
-                        '<input id="pay-cvv" type="text" maxlength="3" class="swal2-input" placeholder="123" style="margin: 4px 0 0 0; width: 100%; height: 38px; font-size: 14px;">' +
-                    '</div>' +
-                '</div>' +
-            '</div>',
-        focusConfirm: false,
-        confirmButtonText: 'Validar y Pagar',
-        confirmButtonColor: '#1b5e20',
-        showCancelButton: true,
-        cancelButtonText: 'Atrás',
-        cancelButtonColor: '#757575',
-        didOpen: () => {
-            const fileInput = document.querySelector('.swal2-file');
-            if (fileInput) fileInput.setAttribute('style', 'display: none !important;');
-        },
-        preConfirm: () => {
-            const titular = document.getElementById('pay-titular').value.trim();
-            const tarjeta = document.getElementById('pay-tarjeta').value.trim();
-            const caducidad = document.getElementById('pay-caducidad').value.trim();
-            const cvv = document.getElementById('pay-cvv').value.trim();
-
-            if (!titular || !tarjeta || !caducidad || !cvv) {
-                Swal.showValidationMessage('Todos los campos financieros son obligatorios.');
-                return false;
-            }
-            if (tarjeta.length < 16 || isNaN(tarjeta)) {
-                Swal.showValidationMessage('La tarjeta requiere 16 caracteres numéricos.');
-                return false;
-            }
-            if (!caducidad.includes('/') || caducidad.length < 5) {
-                Swal.showValidationMessage('Formato incorrecto (Utiliza MM/AA).');
-                return false;
-            }
-            if (cvv.length < 3 || isNaN(cvv)) {
-                Swal.showValidationMessage('El CVV consta de 3 números traseros.');
-                return false;
-            }
-            return true;
-        }
-    }).then((result) => {
-        if (result.isConfirmed) {
-            ejecutarEmisionPDF(nombrePack, precioPack, datosPersonales);
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
-            abrirFormularioReserva(nombrePack, precioPack);
+            ejecutarEmisionPDF(nombrePack, precioPack, result.value);
         }
     });
 }
@@ -478,7 +385,7 @@ async function ejecutarEmisionPDF(nombrePack, precioPack, datos) {
     doc.setTextColor(255, 255, 255);
     doc.setFont("times", "bold");
     doc.setFontSize(19);
-    doc.text("ANTONIO GRANADA SKYDIVING", 40, 20);
+    doc.text("AT SKYDIVING", 40, 20);
     doc.setFont("times", "italic");
     doc.setFontSize(10);
     doc.text("Salto en paracaídas tándem · Granada, España", 40, 28);
@@ -513,7 +420,7 @@ async function ejecutarEmisionPDF(nombrePack, precioPack, datos) {
     doc.setFont("times", "normal");
     doc.setFontSize(10.5);
     doc.text(`Nombre completo:   ${datos.nombre} ${datos.apellidos}`, 30, 95);
-    doc.text(`DNI / Pasaporte:   ${datos.dni}`, 30, 103);
+    doc.text("Reserva de demostracion (proyecto ficticio)", 30, 103);
     doc.text(`Edad:   ${datos.edad} anos`, 30, 111);
     doc.setTextColor(20, 120, 65);
     doc.text(`Documento de identidad verificado correctamente`, 30, 119);
@@ -561,8 +468,8 @@ async function ejecutarEmisionPDF(nombrePack, precioPack, datos) {
     doc.setFont("times", "italic");
     doc.setFontSize(9);
     doc.setTextColor(140, 140, 140);
-    doc.text("Presente este recibo junto con el DNI original el dia del salto.", 18, 266);
-    doc.text("Antonio Granada Skydiving - Aerodromo de Granada - info@antonioparacaidismo.com", 18, 272);
+    doc.text("Documento de demostracion: proyecto ficticio, sin validez.", 18, 266);
+    doc.text("AT Skydiving - Aerodromo de Granada - info@atparacaidismo.com", 18, 272);
 
     doc.save(`Confirmacion_${localizador}.pdf`);
 
@@ -608,7 +515,7 @@ function mostrarRecompensa() {
         "🌪️ Nivel de reflejos: huracán categoría 3.",
         "🎬 Esto merece salir en el vídeo de tu salto real.",
         "🛬 Aterrizaje perfecto en la puntuación más alta de hoy.",
-        "🧑‍✈️ El equipo de Antonio Granada te ficha honoríficamente."
+        "🧑‍✈️ El equipo de AT te ficha honoríficamente."
     ];
 
     let indice;
@@ -774,7 +681,7 @@ function cambiarPaginaBlog(direccion) {
 }
 const curiosidades = [
     {
-        img: "https://images.unsplash.com/photo-1659901981145-dbc056431a8b?w=800&q=80&auto=format&fit=crop",
+        img: "imagenes/escena-tandem.svg",
         titulo: "5 cosas que debes saber antes de tu primer salto",
         resumen: "Desde qué ropa llevar hasta cómo controlar los nervios en la avioneta: la guía definitiva para quienes van a saltar por primera vez.",
         texto: `
@@ -787,7 +694,7 @@ const curiosidades = [
         `
     },
     {
-        img: "https://images.unsplash.com/photo-1591007232007-b26dfbbc9a9a?w=800&q=80&auto=format&fit=crop",
+        img: "imagenes/escena-caida.svg",
         titulo: "¿Qué se siente realmente en caída libre?",
         resumen: "No es como una montaña rusa. Te contamos qué pasa en tu cuerpo durante esos 45 segundos.",
         texto: `
@@ -798,7 +705,7 @@ const curiosidades = [
         `
     },
     {
-        img: "https://images.unsplash.com/photo-1664494130837-14e0473ed284?w=800&q=80&auto=format&fit=crop",
+        img: "imagenes/escena-avioneta.svg",
         titulo: "Del salto tándem a tu propia licencia",
         resumen: "Muchos de nuestros alumnos empezaron con un tándem. Así es el camino hasta saltar en solitario.",
         texto: `
@@ -809,7 +716,7 @@ const curiosidades = [
         `
     },
     {
-        img: "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=800&q=80&auto=format&fit=crop",
+        img: "imagenes/escena-atardecer.svg",
         titulo: "Los récords más increíbles del paracaidismo",
         resumen: "Desde saltos estratosféricos hasta formaciones de cientos de personas en el aire a la vez.",
         texto: `
@@ -820,7 +727,7 @@ const curiosidades = [
         `
     },
     {
-        img: "https://images.unsplash.com/photo-1629141334092-9f57a94b6686?w=800&q=80&auto=format&fit=crop",
+        img: "imagenes/escena-caida.svg",
         titulo: "5 mitos sobre el paracaidismo que no son ciertos",
         resumen: "Desmontamos, con datos reales, los mitos más extendidos sobre este deporte.",
         texto: `
@@ -879,21 +786,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 /* Galería: fotos y vídeos, uno a la vez */
 const galeriaFotos = [
-    { img: "https://images.unsplash.com/photo-1659221876406-31a3746f41b9?w=1000&q=80&auto=format&fit=crop", alt: "Salto tándem en paracaídas" },
-    { img: "https://images.unsplash.com/photo-1630879937467-4afa290b1a6b?w=1000&q=80&auto=format&fit=crop", alt: "Avioneta de salto" },
-    { img: "https://images.unsplash.com/photo-1601024445121-e5b82f020549?w=1000&q=80&auto=format&fit=crop", alt: "Paracaídas en el aire" },
-    { img: "https://images.unsplash.com/photo-1483301563007-8d0161daa1d0?w=1000&q=80&auto=format&fit=crop", alt: "Salto sobre el paisaje" },
-    { img: "https://images.unsplash.com/photo-1620654458602-b27e08e8afb3?w=1000&q=80&auto=format&fit=crop", alt: "Salto en pleno vuelo" },
-    { img: "https://images.unsplash.com/photo-1629141334092-9f57a94b6686?w=1000&q=80&auto=format&fit=crop", alt: "Dos saltadores en el aire" },
-    { img: "https://images.unsplash.com/photo-1654786154777-02c4d0668373?w=1000&q=80&auto=format&fit=crop", alt: "Vuelo en paracaídas" },
-    { img: "https://images.unsplash.com/photo-1521673252667-e05da380b252?w=1000&q=80&auto=format&fit=crop", alt: "Saltador en el cielo" }
+    { img: "imagenes/escena-tandem.svg", alt: "Ilustración: salto tándem" },
+    { img: "imagenes/escena-atardecer.svg", alt: "Ilustración: saltos al atardecer" }
 ];
 
 const galeriaVideos = [
-    { id: "TwpXYAECM5I", titulo: "Vídeo promocional de salto tándem" },
-    { id: "OuwWH0IfeX4", titulo: "Salto tándem en primera persona" },
-    { id: "SEq2RoS3V4A", titulo: "Recopilación de disciplinas de paracaidismo" },
-    { id: "PvBtWSoEcOc", titulo: "Salto tándem visto desde cámara exterior" }
+    { src: "Video de la portada/salto-1.mp4", titulo: "Vídeo de salto 1 (generado con IA)" },
+    { src: "Video de la portada/salto-2.mp4", titulo: "Vídeo de salto 2 (generado con IA)" }
 ];
 
 let galeriaTabActual = 'fotos';
@@ -915,7 +814,7 @@ function renderizarGaleria() {
         const v = galeriaVideos[indiceGaleriaVideo];
         visor.innerHTML = `
             <div class="galeria-visor__video reveal is-visible">
-                <iframe src="https://www.youtube.com/embed/${v.id}" title="${v.titulo}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <video src="${v.src}" title="${v.titulo}" controls muted playsinline preload="metadata" style="width:100%;border-radius:12px"></video>
             </div>
         `;
     }
