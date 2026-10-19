@@ -681,7 +681,7 @@ function cambiarPaginaBlog(direccion) {
 }
 const curiosidades = [
     {
-        img: "imagenes/escena-tandem.svg",
+        img: "imagenes/ia/tandem.jpg",
         titulo: "5 cosas que debes saber antes de tu primer salto",
         resumen: "Desde qué ropa llevar hasta cómo controlar los nervios en la avioneta: la guía definitiva para quienes van a saltar por primera vez.",
         texto: `
@@ -694,7 +694,7 @@ const curiosidades = [
         `
     },
     {
-        img: "imagenes/escena-caida.svg",
+        img: "imagenes/ia/caida.jpg",
         titulo: "¿Qué se siente realmente en caída libre?",
         resumen: "No es como una montaña rusa. Te contamos qué pasa en tu cuerpo durante esos 45 segundos.",
         texto: `
@@ -705,7 +705,7 @@ const curiosidades = [
         `
     },
     {
-        img: "imagenes/escena-avioneta.svg",
+        img: "imagenes/ia/avioneta.jpg",
         titulo: "Del salto tándem a tu propia licencia",
         resumen: "Muchos de nuestros alumnos empezaron con un tándem. Así es el camino hasta saltar en solitario.",
         texto: `
@@ -716,7 +716,7 @@ const curiosidades = [
         `
     },
     {
-        img: "imagenes/escena-atardecer.svg",
+        img: "imagenes/ia/atardecer.jpg",
         titulo: "Los récords más increíbles del paracaidismo",
         resumen: "Desde saltos estratosféricos hasta formaciones de cientos de personas en el aire a la vez.",
         texto: `
@@ -727,7 +727,7 @@ const curiosidades = [
         `
     },
     {
-        img: "imagenes/escena-caida.svg",
+        img: "imagenes/ia/caida.jpg",
         titulo: "5 mitos sobre el paracaidismo que no son ciertos",
         resumen: "Desmontamos, con datos reales, los mitos más extendidos sobre este deporte.",
         texto: `
@@ -786,8 +786,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 /* Galería: fotos y vídeos, uno a la vez */
 const galeriaFotos = [
-    { img: "imagenes/escena-tandem.svg", alt: "Ilustración: salto tándem" },
-    { img: "imagenes/escena-atardecer.svg", alt: "Ilustración: saltos al atardecer" }
+    { img: "imagenes/ia/tandem.jpg", alt: "Salto tándem" },
+    { img: "imagenes/ia/atardecer.jpg", alt: "Saltos al atardecer" }
 ];
 
 const galeriaVideos = [
